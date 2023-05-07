@@ -3,6 +3,8 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain
 from dotenv import find_dotenv, load_dotenv
 
+from third_parties.linkedin import scrape_linkedin_profile
+
 load_dotenv(find_dotenv())
 
 information = """
@@ -18,9 +20,9 @@ Forbes's real-time billionaires list.
 """
 
 if __name__ == "__main__":
-
     summary_template = """
-    Given the information {info} about a person from I want you to create:
+    Given the LinkedIn information {info} about a person from I
+    want you to create:
     1. A short summary of the person
     2. Two interesting facts about the person
     """
@@ -33,4 +35,8 @@ if __name__ == "__main__":
 
     chain = LLMChain(llm=llm, prompt=summary_prompt_template)
 
-    print(chain.run(info=information))
+    linkedin_data = scrape_linkedin_profile(
+        "https://www.linkedin.com/in/harrison-chase-961287118/"
+    )
+
+    print(chain.run(info=linkedin_data))
