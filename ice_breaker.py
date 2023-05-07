@@ -12,8 +12,7 @@ linkedin_profile_url = linkedin_lookup_agent("Eden Marco")
 
 if __name__ == "__main__":
     summary_template = """
-    Given the LinkedIn information {info} about a person from I
-    want you to create:
+    Given the LinkedIn information {info} about a person I want you to create:
     1. A short summary of the person
     2. Two interesting facts about the person
     """
