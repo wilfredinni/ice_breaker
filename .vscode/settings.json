@@ -7,11 +7,13 @@
         "ˈiːlɒn",
         "dotenv",
         "Elon",
+        "elonmusk",
         "langchain",
         "linkedin",
         "PROXYCURL",
         "Serp",
-        "serpapi"
+        "serpapi",
+        "tweepy"
     ],
     "python.linting.flake8Args": [
         "--max-line-length=100"

@@ -9,15 +9,16 @@ def lookup(name: str) -> str:
     """Lookup a person on LinkedIn and return their profile data."""
     llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
     template = """
-    Given the full name {full_name} I want you to get me a link tho their
-    LinkedIn profile page. Your answer should contain only a URL
+    Given the full name {full_name} I want you to get me the link to their
+    Twitter profile page and extract the username. Your answer should contain
+    only the username
     """
 
     tools_for_agent = [
         Tool(
-            name="Crawl Google 4 LinkedIn profile page",
+            name="Crawl Google 4 Twitter profile page",
             func=get_profile_url,
-            description="Useful when you need to get a LinkedIn profile URL",
+            description="Useful when you need to get a Tweeter profile URL",
         )
     ]
 
@@ -32,7 +33,7 @@ def lookup(name: str) -> str:
         input_variables=["full_name"],
     )
 
-    linkedin_profile_url = agent.run(
+    twitter_username = agent.run(
         prompt_template.format_prompt(full_name=name),
     )
-    return linkedin_profile_url
+    return twitter_username
