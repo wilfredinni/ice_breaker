@@ -12,7 +12,8 @@ load_dotenv(find_dotenv())
 
 name = "Carlos Montecinos Geisse"
 
-if __name__ == "__main__":
+
+def ice_break(name: str) -> str:
     linkedin_profile_url = linkedin_lookup_agent(name)
     linkedin_data = scrape_linkedin_profile(linkedin_profile_url)
     twitter_username = twitter_lookup_agent(name)
@@ -33,7 +34,9 @@ if __name__ == "__main__":
     )
 
     llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
-
     chain = LLMChain(llm=llm, prompt=summary_prompt_template)
-
     print(chain.run(linkedin_info=linkedin_data, twitter_info=tweets))
+
+
+if __name__ == "__main__":
+    ice_break(name)
