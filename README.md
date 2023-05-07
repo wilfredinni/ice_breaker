@@ -2,7 +2,7 @@
 
 An example implementation of OpenAI and Langchain's ability to easily use third parties to produce internet aware outputs.
 
-In this example, Twitter and Linkedin are used to produce a resume of a person.
+In this example, Twitter and Linkedin are used to produce the resume of a person.
 
 ## Installation
 
