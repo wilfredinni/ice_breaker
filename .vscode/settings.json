@@ -9,9 +9,12 @@
         "Elon",
         "langchain",
         "linkedin",
-        "PROXYCURL"
+        "PROXYCURL",
+        "Serp",
+        "serpapi"
     ],
     "python.linting.flake8Args": [
         "--max-line-length=100"
     ],
+    "editor.formatOnSave": true,
 }

@@ -1,11 +1,14 @@
-from langchain import PromptTemplate
-from langchain.chat_models import ChatOpenAI
-from langchain.chains import LLMChain
 from dotenv import find_dotenv, load_dotenv
+from langchain import PromptTemplate
+from langchain.chains import LLMChain
+from langchain.chat_models import ChatOpenAI
 
+from agents.linkedin_lookup_agent import lookup as linkedin_lookup_agent
 from third_parties.linkedin import scrape_linkedin_profile
 
 load_dotenv(find_dotenv())
+
+linkedin_profile_url = linkedin_lookup_agent("Eden Marco")
 
 if __name__ == "__main__":
     summary_template = """
@@ -23,8 +26,6 @@ if __name__ == "__main__":
 
     chain = LLMChain(llm=llm, prompt=summary_prompt_template)
 
-    linkedin_data = scrape_linkedin_profile(
-        "https://www.linkedin.com/in/harrison-chase-961287118/"
-    )
+    linkedin_data = scrape_linkedin_profile(linkedin_profile_url)
 
     print(chain.run(info=linkedin_data))
