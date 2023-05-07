@@ -10,8 +10,6 @@ from third_parties.twitter import scrape_user_tweets
 
 load_dotenv(find_dotenv())
 
-name = "Carlos Montecinos Geisse"
-
 
 def ice_break(name: str) -> str:
     linkedin_profile_url = linkedin_lookup_agent(name)
@@ -35,8 +33,11 @@ def ice_break(name: str) -> str:
 
     llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
     chain = LLMChain(llm=llm, prompt=summary_prompt_template)
-    print(chain.run(linkedin_info=linkedin_data, twitter_info=tweets))
+    result = chain.run(linkedin_info=linkedin_data, twitter_info=tweets)
+    return result
 
 
 if __name__ == "__main__":
-    ice_break(name)
+    name = "Harrison Chase"
+    result = ice_break(name)
+    print(result)
