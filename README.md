@@ -1,6 +1,6 @@
 # Icebreaker
 
-An example implementation of OpenAI and Langchain's ability to easily use third party data to produce internet data aware outputs.
+An example implementation of OpenAI and Langchain's ability to easily use third parties to produce internet data aware outputs.
 
 In this example, Twitter and Linkedin data is used to produce a resume of a person.
 
